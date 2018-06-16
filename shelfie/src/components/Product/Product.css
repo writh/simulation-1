@@ -1,0 +1,16 @@
+.product{
+    display: flex;
+    padding: 20px;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.img{
+    height: 250px;
+    width: 250px;
+}
+.detailText{
+    flex-direction: row;
+}

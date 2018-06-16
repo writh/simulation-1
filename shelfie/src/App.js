@@ -11,11 +11,15 @@ class App extends Component {
     this.state = {
       list:[]
     }
-    this.componentDidMount = this.componentDidMount.bind( this );
+
   };
 
   componentDidMount(){
-    axios.get(`http://localhost:3005/api/inventory`).then( 
+    this.fetch()
+  }
+
+  fetch = () => {
+    axios.get(`/api/inventory`).then( 
       (res) => {
         console.log(res);
         this.setState({
@@ -31,8 +35,8 @@ class App extends Component {
       <div className="App">
         <Header/>
         <div className="body">
-          <Dashboard list = {this.state.list}/>
-          <Form componentDidMountFn = {this.componentDidMount}/>
+          <div><Dashboard list = {this.state.list} fetchFn = {this.fetch}/></div>
+          <div className='appForm'><Form fetchFn = {this.fetch}/></div>
         </div>
       </div>
     );

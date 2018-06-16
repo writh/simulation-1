@@ -1,2 +1,4 @@
 INSERT INTO products
-    (id, name, price, img)
+    (name, price, img)
+    VALUES
+    ($1, $2, $3)

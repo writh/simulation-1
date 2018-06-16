@@ -3,29 +3,23 @@ const express = require('express');
 const ctrl = require('./controller');
 const massive = require('massive');
 const cors = require('cors');
-require('dotenv').config();
+require('dotenv').config({ path: __dirname + '/../.env', });
 const app = express();
 const port = 3005;
 
 app.use(bodyParser.json())
 app.use(cors());
 
-massive(process.env.DB_CONNECTION_STING, { scripts: __dirname + '/db'})
+massive(process.env.DB_CONNECTION_STRING)
     .then(dbInstance => {
-        db = dbInstance;
+       app.set('db', dbInstance)
     }) 
     .catch(err => {
         console.warn(err);
     })
-    
-
-
-process.on('uncaughtException', function (err) {
-    console.log(err);
-}); 
 
 app.get('/api/inventory',ctrl.getInventory)
-app.post('/api/product', ctrl.createProduct)
-
+app.post('/api/product', ctrl.create)
+app.delete('/api/product/:id', ctrl.delete) 
 
 app.listen(port, ()=>console.log(`listening at ${port}`));

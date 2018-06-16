@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import './Form.css'
 
 export default class Form extends Component {
     constructor(){
@@ -45,20 +46,24 @@ export default class Form extends Component {
             <div className='form'>
                 <div className='inputs'>
                     <img 
-                    src = {this.state.url}
+                    className='formImage'
+                    src = {this.state.url || 'http://www.dvitaledesign.com.au/wp-content/uploads/2017/12/placeholder-600x400.png'}
                     alt = 'product'></img>
+                    <p> Image URL: </p>
                     <input 
                     alt = 'imageURL' 
                     onChange = {(e)=>this.handleUrl(e.target.value)} 
                     value={this.state.url}></input>
+                    <p> Item Name: </p>
                     <input 
                     alt = 'name' 
                     onChange = {(e)=>this.handleName(e.target.value)} 
                     value={this.state.name}></input>
+                    <p> Item Price: </p>
                     <input 
                     alt = 'price' 
                     onChange = {(e)=>this.handlePrice(e.target.value)} 
-                    value = {this.state.price}></input>
+                    value = {this.state.price || ''}></input>
                 </div>
                 <div className = 'buttons'>
                     <button 
