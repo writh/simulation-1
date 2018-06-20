@@ -37,7 +37,7 @@ export default class Form extends Component {
         console.log(this.state);
         axios.post(`http://localhost:3005/api/product`, {name, price, url})
             .then( response =>
-            {this.props.componentDidMountFn();
+            {this.props.fetchFn();
             this.handleCancel();
         })
     }
