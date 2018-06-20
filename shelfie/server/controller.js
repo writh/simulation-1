@@ -6,7 +6,7 @@ module.exports = {
         .then(products => res.status(200).json(products))
         .catch( err => {
             console.log(err)
-            res.status(500).json();
+            res.status(500).send({error: "server error"});
         });
     },
     create: (req, res, next) =>{
@@ -17,7 +17,7 @@ module.exports = {
         .then( () => res.status(200).json())
         .catch( err => {
             console.log(err)
-            res.status(500).json();
+            res.status(500).send({error: "server error"});
         });
     },
     delete: (req, res, next) => {
