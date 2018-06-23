@@ -31,5 +31,18 @@ module.exports = {
                 console.log(err)
               });
     
-        }
+    },
+    patch: (req, res, next) =>{
+        // const {name, price, url} = req.body;
+        const database = req.app.get('db');
+        const { params } = req;
+
+        
+        database.update_product(params.id)
+            .then( () => res.status(200).json())
+            .catch( err => {
+                console.log(err)
+                res.status(500).send({error: "server error"});
+            });
+    },
 }

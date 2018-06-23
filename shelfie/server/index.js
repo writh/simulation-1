@@ -20,6 +20,7 @@ massive(process.env.DB_CONNECTION_STRING)
 
 app.get('/api/inventory',ctrl.getInventory)
 app.post('/api/product', ctrl.create)
-app.delete('/api/product/:id', ctrl.delete) 
+app.delete('/api/product/:id', ctrl.delete)
+app.patch('/api/product/:id', ctrl.patch)
 
 app.listen(port, ()=>console.log(`listening at ${port}`));

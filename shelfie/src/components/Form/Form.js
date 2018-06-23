@@ -32,6 +32,20 @@ export default class Form extends Component {
         })
     }
 
+    handleEdit(id){
+        const {name, price, url} = this.state;
+        console.log(`Editing product ID: ${id}`)
+         axios.patch(`http://localhost:3005/api/product`, {name, price, url})
+            .then( response =>
+            {this.props.fetchFn();
+            this.handleCancel();
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    }
+            
+
     newProduct(){
         const {name, price, url} = this.state;
         console.log(this.state);
@@ -74,6 +88,7 @@ export default class Form extends Component {
                     onClick = { () => 
                         this.newProduct()}
                         >Add to Inventory</button>
+                        
                 </div>
             </div>
         )

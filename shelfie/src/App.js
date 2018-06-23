@@ -9,7 +9,8 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      list:[]
+      list:[],
+      currentProd: []
     }
 
   };
@@ -36,7 +37,7 @@ class App extends Component {
         <Header/>
         <div className="body">
           <div><Dashboard list = {this.state.list} fetchFn = {this.fetch}/></div>
-          <div className='appForm'><Form fetchFn = {this.fetch}/></div>
+          <div className='appForm'><Form fetchFn = {this.fetch} currentProd = {this.state.currentProd} list = {this.state.list} /></div>
         </div>
       </div>
     );

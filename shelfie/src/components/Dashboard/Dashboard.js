@@ -17,6 +17,18 @@ export default class Dashboard extends Component {
                 console.log(err)
               });
         }
+
+    handleEdit(id){
+        console.log(`Editing product ID: ${id}`)
+        axios.patch(`/api/product/${id}`)
+        .then(response => {
+            console.log(response);
+            this.props.fetchFn()
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    }
             
 
     render(){
@@ -30,6 +42,7 @@ export default class Dashboard extends Component {
             price = {item.price}
             url = {item.img}
             handleDelete = {() => this.handleDelete(item.id)}
+            handleEdit = {() => this.handleEdit(item.id)}
         />
         )
         }

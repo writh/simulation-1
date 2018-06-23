@@ -2,7 +2,7 @@ import React from 'react';
 import './Product.css'
 export default function Product(props){
     
-    const {name, url, price, handleDelete} = props;
+    const {name, url, price, handleDelete, handleEdit} = props;
     console.log(props);
     return (
         <div className = 'product'>
@@ -11,7 +11,8 @@ export default function Product(props){
                 <div className='detailText'>
                     <h3>{name}</h3>
                     <h3>${price} +tax(where applicable)</h3>
-                    <button onClick={handleDelete}>delete</button>
+                    <button onClick={handleDelete}> delete </button>
+                    <button onClick={handleEdit}> Edit </button>
                 </div>
             </div>
         </div>
